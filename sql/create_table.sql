@@ -11,7 +11,7 @@ create table user
     username     varchar(256)                       not null comment '姓名',
     gender       tinyint                            null comment '性别 -0女 1男 ',
     userPassword varchar(512)                       not null comment '密码',
-    class        varchar(256)                       null comment '所属班级',
+    classNo        varchar(256)                       null comment '所属班级',
     phone        varchar(128)                       null comment '手机号',
     userRole     int      default 0                 not null comment '用户角色 0 - 普通用户 1 - 管理员',
     idDelete     tinyint  default 0                 null comment '是否删除 0 - 正常 1 - 已删除',
