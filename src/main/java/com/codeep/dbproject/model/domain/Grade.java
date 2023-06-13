@@ -1,4 +1,4 @@
-package com.codeep.dbproject.model.domain;
+package com.codeep.dbProject.model.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

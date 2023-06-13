@@ -1,4 +1,4 @@
-package com.codeep.dbproject.constant;
+package com.codeep.dbProject.constant;
 
 /**
  * @author codeep

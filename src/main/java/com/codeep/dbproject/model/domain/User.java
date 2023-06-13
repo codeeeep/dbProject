@@ -1,4 +1,4 @@
-package com.codeep.dbproject.model.domain;
+package com.codeep.dbProject.model.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

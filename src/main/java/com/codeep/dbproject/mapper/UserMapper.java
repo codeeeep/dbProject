@@ -1,8 +1,8 @@
-package com.codeep.dbproject.mapper;
+package com.codeep.dbProject.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.codeep.dbproject.model.domain.User;
+import com.codeep.dbProject.model.domain.User;
 
 /**
 * @author 24796

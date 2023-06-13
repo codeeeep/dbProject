@@ -1,8 +1,7 @@
-package com.codeep.dbproject.service;
+package com.codeep.dbProject.service;
 
-import com.codeep.dbproject.model.domain.User;
+import com.codeep.dbProject.model.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.http.HttpRequest;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,7 +1,7 @@
-package com.codeep.dbproject.mapper;
+package com.codeep.dbProject.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.codeep.dbproject.model.domain.Grade;
+import com.codeep.dbProject.model.domain.Grade;
 
 /**
 * @author 24796

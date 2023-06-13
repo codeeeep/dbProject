@@ -1,6 +1,6 @@
-package com.codeep.dbproject.exception;
+package com.codeep.dbProject.exception;
 
-import com.codeep.dbproject.common.ErrorCode;
+import com.codeep.dbProject.common.ErrorCode;
 
 /**
  * @author codeep

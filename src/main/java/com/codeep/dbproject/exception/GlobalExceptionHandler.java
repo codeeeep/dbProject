@@ -1,8 +1,8 @@
-package com.codeep.dbproject.exception;
+package com.codeep.dbProject.exception;
 
-import com.codeep.dbproject.common.BaseResponse;
-import com.codeep.dbproject.common.ErrorCode;
-import com.codeep.dbproject.common.ResultUtils;
+import com.codeep.dbProject.common.BaseResponse;
+import com.codeep.dbProject.common.ErrorCode;
+import com.codeep.dbProject.common.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

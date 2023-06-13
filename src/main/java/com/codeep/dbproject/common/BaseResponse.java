@@ -1,4 +1,4 @@
-package com.codeep.dbproject.common;
+package com.codeep.dbProject.common;
 
 /**
  * @author codeep

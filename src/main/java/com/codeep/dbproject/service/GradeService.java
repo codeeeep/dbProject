@@ -1,7 +1,7 @@
-package com.codeep.dbproject.service;
+package com.codeep.dbProject.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.codeep.dbproject.model.domain.Grade;
+import com.codeep.dbProject.model.domain.Grade;
 /**
 * @author 24796
 * @description 针对表【grade(成绩表)】的数据库操作Service

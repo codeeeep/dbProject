@@ -1,13 +1,12 @@
-package com.codeep.dbproject.service.impl;
-import java.util.Date;
+package com.codeep.dbProject.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.codeep.dbproject.common.ErrorCode;
-import com.codeep.dbproject.exception.BusinessException;
-import com.codeep.dbproject.mapper.UserMapper;
-import com.codeep.dbproject.model.domain.User;
-import com.codeep.dbproject.service.UserService;
+import com.codeep.dbProject.common.ErrorCode;
+import com.codeep.dbProject.exception.BusinessException;
+import com.codeep.dbProject.mapper.UserMapper;
+import com.codeep.dbProject.model.domain.User;
+import com.codeep.dbProject.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -17,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.codeep.dbproject.constant.UserConstant.USER_LOGIN_STATE;
+import static com.codeep.dbProject.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
 * @author 24796
@@ -56,7 +55,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "学号违法");
         }
         // 密码和校验密码一致
-        if (userPassword != checkPassword){
+        if (userPassword.equals(checkPassword)){
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "两次密码不一致");
         }
         // 学号不能重复

@@ -1,9 +1,9 @@
-package com.codeep.dbproject.service.impl;
+package com.codeep.dbProject.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.codeep.dbproject.mapper.GradeMapper;
-import com.codeep.dbproject.model.domain.Grade;
-import com.codeep.dbproject.service.GradeService;
+import com.codeep.dbProject.mapper.GradeMapper;
+import com.codeep.dbProject.model.domain.Grade;
+import com.codeep.dbProject.service.GradeService;
 import org.springframework.stereotype.Service;
 
 /**

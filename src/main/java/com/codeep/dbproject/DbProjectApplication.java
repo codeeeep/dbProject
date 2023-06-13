@@ -1,4 +1,4 @@
-package com.codeep.dbproject;
+package com.codeep.dbProject;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

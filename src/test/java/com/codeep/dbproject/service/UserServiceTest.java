@@ -1,15 +1,12 @@
-package com.codeep.dbproject.service;
+package com.codeep.dbProject.service;
 import java.util.Date;
 
-import com.codeep.dbproject.mapper.UserMapper;
-import com.codeep.dbproject.model.domain.User;
+import com.codeep.dbProject.model.domain.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author codeep
