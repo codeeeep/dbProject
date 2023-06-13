@@ -41,4 +41,44 @@ class UserServiceTest {
         Assertions.assertTrue(save);
     }
 
+    @Test
+    void userRegister() {
+        String userNo = "2110801303";
+        String username = "程天乐";
+        String userPassword = "123456";
+        String checkPassword = "";
+        // 判空校验
+        Long result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(-1, result);
+        // 学号长度规范检验
+        checkPassword = "123456";
+        userNo = "211080220";
+        result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(-1, result);
+        // 学号格式特殊字符校验
+        userNo = "211080130@";
+        result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(-1, result);
+        // 密码长度校验
+        userPassword = "12345";
+        checkPassword = "12345";
+        userNo = "2110801303";
+        result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(-1, result);
+        // 密码一致性校验
+        userPassword = "123456789";
+        checkPassword = "1234567899";
+        result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(-1, result);
+        // 学号判重校验
+        userNo = "2110802203";
+        checkPassword = "123456789";
+        result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(-1, result);
+        // 成功插入
+        userNo = "2110801303";
+        // System.out.println(userNo + username + userPassword + checkPassword);
+        result = userService.userRegister(userNo, username, userPassword, checkPassword);
+        Assertions.assertEquals(2, result);
+    }
 }
