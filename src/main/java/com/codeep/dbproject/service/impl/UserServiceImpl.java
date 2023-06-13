@@ -13,8 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.codeep.dbproject.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
 * @author 24796
@@ -32,7 +35,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * 盐值，用于混淆密码
      */
     private static final String SALT = "NJFU";
-
 
     @Override
     public long userRegister(String userNo, String username, String userPassword, String checkPassword) {
@@ -80,6 +82,71 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         return user.getId();
 
     }
+
+    @Override
+    public User userLogin(String userNo, String userPassword, HttpServletRequest request) {
+        // 1. 校验
+        // 判空
+        if (StringUtils.isAnyBlank(userNo, userPassword)) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "请求参数为空");
+        }
+        if (userNo.length() != 10){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "学号格式错误");
+        }
+        // 学号不能包含特殊字符
+        String validPattern = "[`~!@#$%^&*()+=|{}':;',\\\\[\\\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+        Matcher matcher = Pattern.compile(validPattern).matcher(userNo);
+        if (matcher.find()) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "学号违法");
+        }
+
+        // 2. 加密
+        String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
+
+        // 3. 查询用户是否存在
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userNo", userNo);
+        queryWrapper.eq("userPassword", encryptPassword);
+        User user = userMapper.selectOne(queryWrapper);
+        if (user == null){
+            return null;
+        }
+
+        // 4. 用户脱敏
+        User safetyUser = getSafetyUser(user);
+
+        // 5. 往session里记录用户登录态
+        request.getSession().setAttribute(USER_LOGIN_STATE, safetyUser);
+
+        return safetyUser;
+    }
+
+
+    /**
+     * 用户脱敏
+     *
+     * @param originUser 用户的全部信息
+     * @return 用户的脱敏后的信息
+     */
+    @Override
+    public User getSafetyUser(User originUser) {
+        if (originUser == null) {
+            return null;
+        }
+        User safetyUser = new User();
+        safetyUser.setId(originUser.getId());
+        safetyUser.setUsername(originUser.getUsername());
+        safetyUser.setUserNo(originUser.getUserNo());
+        safetyUser.setGender(originUser.getGender());
+        safetyUser.setClassNo(originUser.getClassNo());
+        safetyUser.setPhone(originUser.getPhone());
+        safetyUser.setUserRole(originUser.getUserRole());
+        safetyUser.setCreateTime(originUser.getCreateTime());
+        return safetyUser;
+    }
+
+
+
 }
 
 
